@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
-import { contactsSlice } from "./slice";
+import { contactsSlice } from "./contactsSlice";
 
 
 
