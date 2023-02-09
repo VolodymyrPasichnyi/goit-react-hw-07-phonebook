@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 import { fetchContacts } from "./operations"
 
 
-export const contactsSlice = createSlice({
+export const slice = createSlice({
     name: 'contacts', 
     initialState: {
       contacts: {
@@ -10,6 +10,7 @@ export const contactsSlice = createSlice({
         isLoading: false,
         error: null,
       },
+      filter: "",
     },
     extraReducers: builder => {
       builder
@@ -28,4 +29,4 @@ export const contactsSlice = createSlice({
 })
 
 
-export default contactsSlice.reducer
+export default slice.reducer
