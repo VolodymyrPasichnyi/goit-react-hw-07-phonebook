@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { getFilterContacts } from 'redux/contactsSlice';
+import { selectFilter, selectItems } from 'redux/selectors';
 import { Contacts } from './Contacts'
 
 export const ContactList = () => {
-    const contacts = useSelector(state => state.contacts.contacts)
-    const filters = useSelector(getFilterContacts)
+    const contacts = useSelector(selectItems)
+    const filters = useSelector(selectFilter)
 
     const filterUser = () => {
       return contacts.filter(contact => contact.name.toLowerCase().includes(filters.toLowerCase()))
@@ -13,8 +13,8 @@ export const ContactList = () => {
     const users = filters === '' ? contacts : filterUser()
 
     return (
-      <div>
-         {users.map(({ id, name, number }) => {
+      <div>         
+      {users.map(({ id, name, number }) => {
         return (
           <Contacts
                 key={id}
@@ -22,9 +22,8 @@ export const ContactList = () => {
                 number={number}
                 id={id}
           />
-        );
-      })}
-        
+        )
+      })}   
       </div>
     )
 }

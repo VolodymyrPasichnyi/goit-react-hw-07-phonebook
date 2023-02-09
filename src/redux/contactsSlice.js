@@ -4,13 +4,11 @@ import { addContacts, deleteContacts, fetchContacts } from "./operations"
 
 export const contactsSlice = createSlice({
     name: 'contacts', 
-    initialState: {
-      contacts: {
+    initialState:  {
         items: [],
         isLoading: false,
         error: null,
       },
-    },
     extraReducers: builder => {
       builder
           .addCase(fetchContacts.pending, (state) => {
@@ -39,7 +37,7 @@ export const contactsSlice = createSlice({
             state.isLoading = true
           })
           .addCase(deleteContacts.fulfilled, (state, {payload}) => {
-            state.items = state.items.filter(item => item.id !== payload)
+            state.items = state.items.filter(item => item.id !== payload.id)
             state.isLoading = false
             state.error = null
           })

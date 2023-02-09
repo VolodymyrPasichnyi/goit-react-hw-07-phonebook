@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/operations';
@@ -27,7 +26,6 @@ export const ContactForm = () => {
         const newUser = {
             name,
             number,
-            id: nanoid(),
           }
           if (contacts.find(user => user.name === newUser.name)) {
             return alert(`${newUser.name} is already in contacts`)

@@ -21,11 +21,10 @@ export const App = () => {
       <div>
         <h2>Phonebook</h2>
         <ContactForm />
-        {isLoading && !error && <p>Loading...</p>}
         <h2>Contacts</h2>
         <Filter />
         <ContactList />
-
+        {isLoading && !error && <p>Loading...</p>}
       </div>
   )
 }
