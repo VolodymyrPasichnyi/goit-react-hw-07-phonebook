@@ -1,15 +1,15 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/slice';
+import { addContacts } from 'redux/operations';
+import { selectItems } from 'redux/selectors';
 import css from '../ContactForm/ContactForm.module.css'
 
 
 export const ContactForm = () => {
     const [name, setName] = useState('')
     const [number, setNumber] = useState('')
-
-    const contacts = useSelector(state => state.contacts.contacts)
+    const contacts = useSelector(selectItems)
     const dispatch = useDispatch()
 
     const handleChange = ({target}) => {
@@ -32,7 +32,7 @@ export const ContactForm = () => {
           if (contacts.find(user => user.name === newUser.name)) {
             return alert(`${newUser.name} is already in contacts`)
           } else {
-            dispatch(addContact(newUser))
+            dispatch(addContacts(newUser))
             setName('')
             setNumber('')
           }
